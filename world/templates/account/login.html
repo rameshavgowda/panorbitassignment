@@ -1,0 +1,25 @@
+{% extends 'account/base.html' %}
+{% block title %}Login{% endblock title %}
+{% block contant %}
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert">{{message}} </div>
+                {% endfor %}
+            {% endif %}
+            <form action="" method="post" novalidate> 
+                {% csrf_token %}
+                {% for fm in form %}
+                    {{fm.label_tag}} {{fm}} <span class="error">{{fm.errors|striptags}}</span><br>
+                {% endfor %}
+                <input type="submit" class="btn btn-success" value="Generate OTP"> <br>
+                If you are new user click here to <a href="{% url 'account:sign_up' %}">Sign up</a>
+            </form>    
+        </div>
+        <div class="col">
+        </div>
+    </div>
+{% endblock contant %}

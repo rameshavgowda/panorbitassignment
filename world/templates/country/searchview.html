@@ -1,0 +1,33 @@
+{% extends 'country/base.html' %}
+{% block title %}searchview list{% endblock title %}
+<h2> Country details</h2> <hr>
+{% block contant %}
+<div class="row">
+    <div class="text-left">
+        <a href="{% url 'country:searchdata' %}">BACK</a>
+      </div>
+    <div class="col">
+        <h2> Country details</h2> <hr>
+        {% for co in country %}
+            code : {{co.code}} <br>
+            name : {{co.name}} <br>
+            continent: {{co.continent}} <br>
+            region : {{co.region}} <br>
+            surfacearea : {{co.surfacearea}} <br>
+            independent year : {{co.indepyear}} <br>
+            country population : {{co.population}} <br>
+            life expectancy : {{co.lifeexpectancy}} <br>
+            gnp : {{co.gnp}} <br>
+            gnp old :{{co.gnpold}} <br>
+            local name : {{co.localname}} <br>
+            government form : {{co.governmentform}} <br>
+            head of state : {{co.headofstate}} <br>
+            country capital :{{co.capital}} <br>
+        {% endfor %}
+    <div class="col">
+        
+    </div>
+    </div>
+</div>
+
+{% endblock contant %}

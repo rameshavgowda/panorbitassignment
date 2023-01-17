@@ -1,0 +1,84 @@
+{% extends 'country/base.html' %}
+
+{% block title %}search{% endblock title %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+{% block contant %}
+
+    <div class="text-center">
+        <nav class="navbar navbar-light">
+            <form class="form-inline" method= POST action={% url 'country:searchdata'%}>
+
+              {% csrf_token %}
+
+              <input class="form-control mr-sm-2" type="search" placeholder="Search country city or language" aria-label="Search" name="searched" id="tags">
+              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+          {% comment %} <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Name</th>
+                <th scope="col">Continent</th>
+                <th scope="col">Region</th>
+                <th scope="col">SurfaceArea</th>
+                <th scope="col">IndepYear</th>
+                <th scope="col">Population</th>
+                <th scope="col">LifeExpectancy</th>
+                <th scope="col">GNP</th>
+                <th scope="col">GNPOld</th>
+                <th scope="col">LocalName</th>
+                <th scope="col">GovernmentForm</th>
+                <th scope="col">HeadOfState</th>
+                <th scope="col">Capital</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for co in country %}
+              <tr>   
+                <td>{{co.code}}</td>
+                <td>{{co.name}}</td>
+                <td>{{co.continent}}</td>
+                <td>{{co.region}}</td>
+                <td>{{co.surfacearea}}</td>
+                <td>{{co.indepyear}}</td>
+                <td>{{co.population}}</td>
+                <td>{{co.lifeexpectancy}}</td>
+                <td>{{co.gnp}}</td>
+                <td>{{co.gnpold}}</td>
+                <td>{{co.localname}}</td>
+                <td>{{co.governmentform}}</td>
+                <td>{{co.headofstate}}</td>
+                <td>{{co.capital}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table> {% endcomment %}
+
+  <script>
+    $(function(){
+      var availableTage=[
+      {% for co in country %}
+        "{{co.name}}",
+      {% endfor %},
+      {% for ci in city %}
+        "{{ci.name}}",
+      {% endfor %},
+      {% for la in language %}
+        "{{la.name}}",
+      {% endfor %}
+      ];
+      $("#tags").autocomplete({
+        source : availableTage
+      });
+    });
+  </script>
+    </div>
+
+{% endblock contant %}

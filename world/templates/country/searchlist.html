@@ -1,0 +1,100 @@
+{% extends 'country/base.html' %}
+{% block title %}search list{% endblock title %}
+
+{% block contant %}
+<div class="text-center">
+  <div class="text-left">
+    <a href="{% url 'country:searchdata' %}">BACK</a>
+  </div>
+  {% if country %}
+  <h1> Country search </h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Continent</th>
+          <th scope="col">Region</th>
+          <th scope="col">SurfaceArea</th>
+          <th scope="col">IndepYear</th>
+          <th scope="col">Population</th>
+          <th scope="col">LifeExpectancy</th>
+          <th scope="col">GNP</th>
+          <th scope="col">GNPOld</th>
+          <th scope="col">LocalName</th>
+          <th scope="col">GovernmentForm</th>
+          <th scope="col">HeadOfState</th>
+          <th scope="col">Capital</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for co in country %}
+        <tr>   
+          <td>{{co.code}}</td>
+          <td><a href="{% url 'country:countrydetails' co.code %}">{{co.name}}</a></td>
+          <td>{{co.continent}}</td>
+          <td>{{co.region}}</td>
+          <td>{{co.surfacearea}}</td>
+          <td>{{co.indepyear}}</td>
+          <td>{{co.population}}</td>
+          <td>{{co.lifeexpectancy}}</td>
+          <td>{{co.gnp}}</td>
+          <td>{{co.gnpold}}</td>
+          <td>{{co.localname}}</td>
+          <td>{{co.governmentform}}</td>
+          <td>{{co.headofstate}}</td>
+          <td>{{co.capital}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% elif city %}
+    <h3> city search </h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">country_code</th>
+          <th scope="col">District</th>
+          <th scope="col">Population</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ci in city %}
+        <tr>   
+          <td>{{ci.name}}</td>
+          <td>{{ci.countrycode_id}}</td>
+          <td>{{ci.district}}</td>
+          <td>{{ci.population}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% elif language %}
+    <h3>language search</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Countrycode</th>
+          <th scope="col">Language</th>
+          <th scope="col">Isofficail</th>
+          <th scope="col">Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for la in language %}
+        <tr>   
+          <td>{{la.countrycode_id}}</td>
+          <td>{{la.language}}</td>
+          <td>{{la.isofficial}}</td>
+          <td>{{la.percentage}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h4> no data is available</h4>
+    {% endif %}
+
+</div>
+{% endblock contant %}
