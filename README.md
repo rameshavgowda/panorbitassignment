@@ -7,7 +7,7 @@ Be sure you have the following installed on your development machine:
 + Python >= 3.7
 + Django-restframework
 + twilio
-+ psycofg2
++ pymysql
 + Django
 + Git
 + pip

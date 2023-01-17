@@ -1,5 +1,5 @@
 Django==4.1.4
 djangorestframework==3.14.0
 Jinja2==3.1.2
-psycopg2==2.9.5
+pymysql
 twilio==7.16.0
