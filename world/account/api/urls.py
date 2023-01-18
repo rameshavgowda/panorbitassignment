@@ -4,8 +4,9 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
-router.register('signin', views.Signup, basename='user')
-# router.register('login', views.login, basename='user')
+router.register('signin', views.Signup, basename='usersignin')
+router.register('login', views.login, basename='userlogin')
+# router.register('logout',views.logout, basename='logout')
 
 
 
